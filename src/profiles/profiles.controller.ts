@@ -22,13 +22,13 @@ export class ProfilesController {
 
   // POST /profiles
   @Post()
-  create(@Body(new ValidationPipe()) createProfileDto: CreateProfileDto){
+  create(@Body() createProfileDto: CreateProfileDto){
     return this.profilesService.create(createProfileDto);
   }
 
   // PUT /profiles/:id
   @Put(':id')
-  update(@Param('id', ParseUUIDPipe) id: UUID, @Body(new ValidationPipe()) updateProfileDto: UpdateProfileDto){
+  update(@Param('id', ParseUUIDPipe) id: UUID, @Body() updateProfileDto: UpdateProfileDto){
     return this.profilesService.update(id, updateProfileDto);
   }
 
