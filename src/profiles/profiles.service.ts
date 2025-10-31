@@ -47,7 +47,7 @@ export class ProfilesService {
   update(id: string, updateProfileDto: UpdateProfileDto) {
     const profile = this.profiles.find(profile => profile.id === id);
     if (!profile) {
-      throw new NotFoundException('Profile not found');
+      throw new NotFoundException(`Profile with id ${id} not found`);
     }
     const updatedProfile = {
       ...profile,
@@ -58,6 +58,10 @@ export class ProfilesService {
   }
 
   remove(id: string) {
+    const profile = this.profiles.find(profile => profile.id === id);
+    if (!profile) {
+      throw new NotFoundException(`Profile with id ${id} not found`);
+    }
     this.profiles = this.profiles.filter(profile => profile.id !== id);
     return;
   }
