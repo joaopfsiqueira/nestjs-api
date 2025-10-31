@@ -30,7 +30,7 @@ export class ProfilesController {
 
   // DELETE /profiles/:id
   @Delete(':id')
-  @HttpCode(HttpStatus.OK)
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string){
     return
   }
