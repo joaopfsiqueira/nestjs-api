@@ -28,7 +28,11 @@ export class ProfilesService {
   }
 
   findOne(id: string) {
-    return this.profiles.find(profile => profile.id === id);
+    const profile = this.profiles.find(profile => profile.id === id);
+    if (!profile) {
+      throw new NotFoundException();
+    }
+    return profile;
   }
 
   create(createProfileDto: CreateProfileDto) {
