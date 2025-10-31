@@ -22,7 +22,7 @@ export class ProfilesController {
   // POST /profiles
   @Post()
   create(@Body() createProfileDto: CreateProfileDto){
-    return createProfileDto
+    return this.profilesService.create(createProfileDto);
   }
 
   // PUT /profiles/:id

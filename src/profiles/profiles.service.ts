@@ -31,9 +31,11 @@ export class ProfilesService {
   }
 
   create(createProfileDto: CreateProfileDto) {
-    return this.profiles.push({
+    const newProfile = {
       id: randomUUID(),
       ...createProfileDto
-    });
+    };
+    this.profiles.push(newProfile);
+    return newProfile;
   }
 }
