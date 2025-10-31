@@ -52,4 +52,9 @@ export class ProfilesService {
     this.profiles = this.profiles.map(profile => profile.id === id ? updatedProfile : profile);
     return updatedProfile;
   }
+
+  remove(id: string) {
+    this.profiles = this.profiles.filter(profile => profile.id !== id);
+    return;
+  }
 }
