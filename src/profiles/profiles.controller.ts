@@ -1,7 +1,8 @@
-import { Controller, Get, Query, Param, Post, Body, Put, Delete, HttpCode, HttpStatus, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, HttpCode, HttpStatus, ParseUUIDPipe } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ProfilesService } from './profiles.service';
+import type { UUID } from 'crypto';
 
 @Controller('profiles')
 export class ProfilesController {
@@ -15,7 +16,7 @@ export class ProfilesController {
 
   // GET /profiles/:id
   @Get(':id')
-  findOne(@Param('id') id: string){
+  findOne(@Param('id', ParseUUIDPipe) id: UUID){
     return this.profilesService.findOne(id);
   }
 
